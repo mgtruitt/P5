@@ -70,7 +70,7 @@
     {% for hemi in dict.plastic_news %}
     
     <div class="item">
-         <img src={{ hemi["img_url"] }}  alt="Los Angeles" >
+      <a href= {{ hemi["link"] }}><img src={{ hemi["img_url"] }}  class="news" alt= {{ hemi["title"] }}></a>
     </div>
                     
   {% endfor %}
