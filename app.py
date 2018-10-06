@@ -6,16 +6,29 @@ import pandas as pd
 import numpy as np
 import pymongo
 
-import sqlalchemy
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
-from sqlalchemy import create_engine
-
 from flask import Flask, jsonify, render_template
-from flask_sqlalchemy import SQLAlchemy
+
+from scrape_plastic import scrape
 
 app = Flask(__name__)
 
+###########################################################################
+
+conn = "mongodb://localhost:27017"
+client = pymongo.MongoClient(conn)
+
+###########################################################################
+
+doc = scrape()
+
+db = client.P5
+
+db.plastic_news.drop()
+
+db.plastic_news.insert(doc)
+
+
+###########################################################################
 
 #################################################
 # Routes
@@ -23,19 +36,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    """Return the homepage."""
-    return render_template("index.html")
+    document = db.plastic_news.find()[0]
+    return render_template("index.html", dict = document)
 
-# @app.route("/countries")
-# def countries():
-
-#     file = "C:/Users/kcrul/apps/GWHomework/Project_2/asdfg/static/js/countries.geojson"
-#     with open(file, 'r') as f:
-#         jsonfile = json.load(f)
-#         print(jsonfile["features"][0])
-#         f.close()
-
-#     return jsonify(jsonfile)
 
 @app.route("/countryData")
 def countryData():
