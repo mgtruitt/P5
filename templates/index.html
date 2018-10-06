@@ -56,26 +56,35 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active">
-      <img src="static/images/bluebag.png" class="bags" alt="Los Angeles"  >
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+      <li data-target="#myCarousel" data-slide-to="4"></li>
+      <li data-target="#myCarousel" data-slide-to="5"></li>
+      <li data-target="#myCarousel" data-slide-to="6"></li>
+      <li data-target="#myCarousel" data-slide-to="7"></li>
+      <li data-target="#myCarousel" data-slide-to="8"></li>
+    </ol>
+  
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+  
+      {% for hemi in dict.plastic_news %}
+      
+      <div class="item">
+        <a href= {{ hemi["link"] }}>
+          <center><h3>{{ hemi["title"] }}</h3></center>
+          <img src={{ hemi["img_url"] }}  class="news">
+        </a>
+        <center><p>{{ hemi["snippet"] }} - {{ hemi["source"] }}</p></center>
+        
+      </div>
+                      
+    {% endfor %}
+      <script>d3.select(".item")
+        .classed("active", true);</script>
     </div>
-
-    {% for hemi in dict.plastic_news %}
-    
-    <div class="item">
-      <a href= {{ hemi["link"] }}><img src={{ hemi["img_url"] }}  class="news" alt= {{ hemi["title"] }}></a>
-    </div>
-                    
-  {% endfor %}
-
-  </div>
 
   <!-- Left and right controls -->
   <a class="left carousel-control" href="#myCarousel" data-slide="prev">
