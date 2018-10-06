@@ -42,8 +42,7 @@ def scrape():
                             "snippet" : snippet,
                              "source": source}
                 plastic_image_urls.append(dictionary)
-                
-    plastic_image_urls = plastic_image_urls[0:3] 
+ 
     post = {
         "plastic_news" : plastic_image_urls
     }

@@ -21,6 +21,21 @@ const myMap = L.map("map", {center: [42.0, 0], zoom: 2});
 //       style: mapStyle
 //     }).addTo(myMap);
 //   });
+var popup = L.popup({
+  closeButton: false,
+  autoClose: false
+})
+.setLatLng([-50, -180]) 
+.setContent('<strong><h5>2010 Data From Jambeck et al.(2015)</h5></strong><small><p>Mismanaged plastic waste is defined as "plastic that is either littered or inadequately disposed. Inadequately disposed waste is not formally managed and includes disposal in dumps or open, uncontrolled landfills, where it is not fully contained. Mismanaged waste could eventually enter the ocean via inland waterways, wastewater outflows, and transport by wind or tides</p></small>')
+.openOn(myMap);
+
+var popup = L.popup({
+  closeButton: false,
+  autoClose: false
+})
+.setLatLng([0, 180]) 
+.setContent('<strong>HIC: </strong>high income<br><strong>UMI: </strong>upper middle income<br><strong>LMI: </strong>lower middle income<br><strong>LI: </strong>low income<br>')
+.openOn(myMap);
   
 d3.json("http://127.0.0.1:5000/countryData").then(function(data) {
   console.log(data)
@@ -41,9 +56,13 @@ d3.json("http://127.0.0.1:5000/countryData").then(function(data) {
         // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
         mouseover: function(event) {
           if (feature.properties["Economic status"]){
-            layer.bindPopup("<h2>" + feature.properties.ADMIN + "</h2>" +
+            layer.bindPopup("<h3>" + feature.properties.ADMIN + "</h3>" +
                             "<strong>Economic Status:</strong> " + feature.properties["Economic status"] + "<br/>" +
-                            "<strong>Mismanaged plastic waste [kg/person/day]:</strong> " + feature.properties["Mismanaged plastic waste [kg/person/day]"] + "<br/>");
+                            "<strong>Mismanaged plastic waste [kg/person/day]:</strong> " + feature.properties["Mismanaged plastic waste [kg/person/day]"] + "<br/>" +
+                            "<strong>Waste generation rate [kg/person/day]:</strong> " + feature.properties["Waste generation rate [kg/person/day]"] + "<br/>" +
+                            "<strong>% Plastic in waste stream:</strong> " + feature.properties["% Plastic in waste stream"] + "<br/>"
+      
+                          );
           }
           else{
             layer.bindPopup("<h2>" + feature.properties.ADMIN + "</h1> Data unavailable");
@@ -73,7 +92,7 @@ d3.json("http://127.0.0.1:5000/countryData").then(function(data) {
 
     }
   }).addTo(myMap);
-  var legend = L.control({ position: "bottomright" });
+  var legend = L.control({ position: "topright" });
   legend.onAdd = function() {
     var div = L.DomUtil.create("div", "info legend");
     var limits = geojson.options.limits; // Properties of your chloropleth
