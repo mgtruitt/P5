@@ -75,13 +75,13 @@ h1 {
 
 .AB {
   text-align: center;
-  width: 655px;
-  height: 600px;
+  width: 455px;
+  height: 400px;
   border: solid #909090 5px;
   margin-top: 50px;
   margin-bottom: 50px;
   margin-right: 50px;
-  margin-left: 50px;
+  margin-left: 75px;
 }
 
 #boxedOG {
