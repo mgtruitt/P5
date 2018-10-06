@@ -94,10 +94,10 @@ var trace2 = {
 var data = [trace1, trace2];
 
 var layout = {
-  title: 'Double Y Axis Example',
-  yaxis: {title: 'yaxis title'},
+  title: 'Plastic Production vs. Population 1960-2014',
+  yaxis: {title: 'Plastic Production'},
   yaxis2: {
-    title: 'yaxis2 title',
+    title: 'Population',
     titlefont: {color: 'rgb(148, 103, 189)'},
     tickfont: {color: 'rgb(148, 103, 189)'},
     overlaying: 'y',
