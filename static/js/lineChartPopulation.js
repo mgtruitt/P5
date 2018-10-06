@@ -16,7 +16,7 @@ var trace1 = {
 231000000, 241000000, 256000000, 263000000, 280000000, 295000000, 281000000,
 288000000, 313000000, 325000000, 338000000, 352000000,
 367000000],
-  name: 'yaxis data',
+  name: 'Plastic in tones',
   type: 'BubblePlot'
 };
 
@@ -86,7 +86,7 @@ var trace2 = {
     7213426452,
     7298453033,
     ],
-  name: 'yaxis2 data',
+  name: 'population',
   yaxis: 'y2',
   type: 'BubblePlot'
 };
