@@ -123,40 +123,46 @@ Discards[25] = "58";
 
 //Generation trace
 var traceGeneration = {
- x: Year,
- y: Generation,
- type: "line",
- name: "Generated Plastics",
- marker: {
-   color:'#4d88ff'
- }
+x: Year,
+y: Generation,
+type: "line",
+name: "Generated Plastic Waste",
+marker: {
+  color:'#4d88ff'
+}
 };
 //IN BILLIONS OF POUNDS
 
 //Discard trace
 var traceDiscards = {
- x: Year,
- y: Discards,
- type: "line",
- name: "Discarded Plastics",
- marker: {
-   color:'#4dd2ff'
- }
+x: Year,
+y: Discards,
+type: "line",
+name: "Discarded Plastic Waste",
+marker: {
+  color:'#4dd2ff'
+}
 };
 
 //Recovery trace
 var traceRecovery = {
- x: Year,
- y: Recovery,
- type: "line",
- name: "Recovered Plastics",
- marker: {
-   color:'#ff4d4d'
- }
+x: Year,
+y: Recovery,
+type: "line",
+name: "Recovered Plastic Waste",
+marker: {
+  color:'#ff4d4d'
+}
 };
 
 
 var data = [traceGeneration, traceDiscards, traceRecovery];
+var layout = {
+ title: 'Plastic Waste Generation, Recovery, and Discards in the United States, 1990-2012',
+ yaxis: {title: 'Pounds (in Billions)'},
+ yaxis2: {
+   title: 'Year',
+ }
+};
 
-
-Plotly.newPlot("plot", data);
+Plotly.newPlot("plot", data, layout);
