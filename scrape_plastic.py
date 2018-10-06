@@ -33,9 +33,14 @@ def scrape():
                 news = plastic.find("a", class_ ="title")
                 news_title = news.text
 
+                snippet = plastic.find("div", class_ = "snippet").text
+                source = plastic.find("div", class_ = "source").text  
+
                 dictionary = {"title": news_title,
                           "img_url" : img_url,
-                          "link" : link}
+                          "link" : link,
+                            "snippet" : snippet,
+                             "source": source}
                 plastic_image_urls.append(dictionary)
                 
     plastic_image_urls = plastic_image_urls[0:3] 
